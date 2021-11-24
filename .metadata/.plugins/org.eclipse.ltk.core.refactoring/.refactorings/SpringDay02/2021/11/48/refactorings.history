@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;HttpServletRequest&apos; in &apos;com.human.bbs1.BBSController.inputSave(...)&apos; to &apos;request&apos;&#x0D;&#x0A;- Original project: &apos;SpringDay02&apos;&#x0D;&#x0A;- Original element: &apos;com.human.bbs1.BBSController.inputSave(Model, HttpServletRequest).HttpServletRequest&apos;&#x0D;&#x0A;- Renamed element: &apos;HttpServletRequest&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;HttpServletRequest&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;com.human.bbs1{BBSController.java[BBSController~inputSave~QModel;~QHttpServletRequest;@HttpServletRequest!577!613!596!613!QHttpServletRequest;!0!true" name="request" references="true" stamp="1637635172904" version="1.0"/>
+</session>

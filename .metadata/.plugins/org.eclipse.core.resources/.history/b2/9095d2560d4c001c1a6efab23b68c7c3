@@ -1,0 +1,38 @@
+package com.human.bbs1;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.human.VO.BBS_VO;
+
+@Controller
+public class BBSController {
+	// 변경 예정
+	private ArrayList<BBS_VO> bbsList = new ArrayList();
+
+	@RequestMapping(value = "/inputForm", method = RequestMethod.GET)
+	public String inputForm() {
+		return "BBS/inputForm";
+	}
+
+	@RequestMapping(value = "/inputSave", method = RequestMethod.POST)
+	public String inputSave(Model model, HttpServletRequest request) {
+		BBS_VO newBV = new BBS_VO();
+		newBV.setAuthor(request.getParameter("author"));
+		newBV.setContent(request.getParameter("content"));
+		bbsList.add(newBV);
+		return "redirect::/bbsList";
+	}
+
+	@RequestMapping(value = "/bbsList", method = RequestMethod.POST)
+	public String bbsList(HttpServletRequest request, Model model) {
+		model.addAttribute("bbsList", bbsList);
+		return "bbs/bbsList";
+	}
+}

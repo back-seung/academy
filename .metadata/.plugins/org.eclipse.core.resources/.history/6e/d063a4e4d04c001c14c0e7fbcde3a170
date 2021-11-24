@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>수정하기</h1>
+	<h2>현재 값</h2>
+	<table border="1" align="center">
+		<tr>
+			<td>작가 : ${oneData.author}</td>
+		</tr>
+		<tr>
+			<td>내용 : ${oneData.info}</td>
+		</tr>
+		<tr>
+			<td>조회수</td>
+			<td>${oneData.cnt}</td>
+		</tr>
+		<tr>
+			<td colspan="2"><a href="inputList">[리스트로 돌아가기]</a></td>
+		</tr>
+	</table>
+</body>
+</html>

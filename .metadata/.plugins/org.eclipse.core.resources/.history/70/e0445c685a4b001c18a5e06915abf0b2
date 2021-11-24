@@ -1,0 +1,8 @@
+package com.human.bbs;
+
+import org.springframework.stereotype.Controller;
+
+@Controller // 스프링이 관리함
+public class BBSController {
+
+}

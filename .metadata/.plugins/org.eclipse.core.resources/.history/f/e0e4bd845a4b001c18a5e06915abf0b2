@@ -1,0 +1,16 @@
+package com.human.bbs;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller // 스프링이 관리함
+public class BBSController {
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String bbsInputForm() {
+		
+		
+		return "bbsInput";
+	}
+}

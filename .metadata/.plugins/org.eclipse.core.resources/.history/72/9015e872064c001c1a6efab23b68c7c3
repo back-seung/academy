@@ -1,0 +1,27 @@
+package com.human.bbs1;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class BBSController {
+
+	@RequestMapping(value = "/inputForm", method = RequestMethod.GET)
+	public String inputForm() {
+		return "BBS/inputForm";
+	}
+
+	@RequestMapping(value = "/inputSave", method = RequestMethod.POST)
+	public String inputSave(Model model, HttpServletRequest HttpServletRequest) {
+		String author = HttpServletRequest.getParameter("author");
+		String content = HttpServletRequest.getParameter("content");
+
+		model.addAttribute("author", author);
+		model.addAttribute("content", content);
+		return "BBS/inputSave";
+	}
+}

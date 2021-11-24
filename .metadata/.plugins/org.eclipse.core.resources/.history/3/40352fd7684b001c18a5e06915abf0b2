@@ -1,0 +1,19 @@
+package com.human.bbs;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class MemberController {
+
+	@RequestMapping(value = "/memberInputForm", method = RequestMethod.GET)
+	public String memberInputForm(HttpServletRequest HttpServletRequest) {
+		String id = HttpServletRequest.getParameter("id");
+		String pw = HttpServletRequest.getParameter("pw");
+		System.out.println("id : " + id + "pw : " + pw);
+		return "memberInput";
+	}
+}

@@ -54,4 +54,5 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>  <!-- /* 는 루트의 모든 것 -->
 	</filter-mapping>
+
 </web-app>

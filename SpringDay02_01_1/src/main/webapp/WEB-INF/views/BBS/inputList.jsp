@@ -21,7 +21,7 @@
 		</tr>
 		<c:forEach items="${bookList}" var="vo">
 			<c:set var="i" value="${i+1}" />
-			<tr name="session">
+			<tr>
 				<td>${i-1}</td>
 				<td>${vo.author}</td>
 				<td><a href="listDetail?index=${i-1}">${vo.title}</a></td>

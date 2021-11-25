@@ -1,6 +1,6 @@
 package com.human.bbs1;
 
-import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,29 +10,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.human.VO.BBS_VO;
+import com.human.service.IF_BBSService;
 
 @Controller
 public class BBSController {
-	// 변경 예정
-	private ArrayList<BBS_VO> bbsList = new ArrayList<BBS_VO>();
+	private IF_BBSService bbsService; // 서비스 객체
 
 	@RequestMapping(value = "/inputForm", method = RequestMethod.GET)
-	public String inputForm() {
+	public String inputForm() throws Exception {
 		return "BBS/inputForm";
 	}
 
 	@RequestMapping(value = "/inputSave", method = RequestMethod.POST)
-	public String inputSave(HttpServletRequest request) {
-		BBS_VO newBV = new BBS_VO();
-		newBV.setAuthor(request.getParameter("author"));
-		newBV.setContent(request.getParameter("content"));
-		bbsList.add(newBV);
+	public String inputSave(BBS_VO bbsvo, Locale locale, Model model) throws Exception {
+		bbsService.insert(bbsvo);
 		return "redirect:/bbsList"; // 컨트롤러 재호출
 	}
 
+//	@RequestMapping(value = "/bbsList", method = RequestMethod.POST)
+//	public String bbsModInput(HttpServletRequest request, Locale locale, Model model) throws Exception {
+//		int viewIndex = Integer.parseInt(request.getParameter("index"));
+//		
+//		return ;
+//	}
+
 	@RequestMapping(value = "/bbsList", method = RequestMethod.GET)
-	public String bbsList(Model model) {
-		model.addAttribute("bbsList", bbsList); // 변경할 때 DAO에서 가져옴
+	public String bbsList(Model model) throws Exception {
 		return "BBS/bbsList";
 	}
 }

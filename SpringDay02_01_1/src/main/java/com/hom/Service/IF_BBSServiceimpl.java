@@ -4,7 +4,6 @@ import java.awt.List;
 
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hom.DAO.IF_BBSDAO;
@@ -22,8 +21,30 @@ public class IF_BBSServiceimpl implements IF_BBSService {
 	}
 
 	@Override
-	public java.util.List<Book_VO> select(Book_VO searchVO) throws Exception {
-		return bbsdao.select(searchVO);
+	public java.util.List<Book_VO> selectAll() throws Exception {
+		// 권한 체크하도록 추가 등 사용자의 요청을 처리하는 다양한 매커니즘이 추가될 수도 있다.
+		return bbsdao.selectAll(); // repository에 데이터 작업을 요청
+	}
+
+	@Override
+	public Book_VO selectOne(int no) throws Exception {
+		bbsdao.updateCnt(no);
+		return bbsdao.selectOne(no);
+	}
+
+	@Override
+	public Book_VO updateView(int no) throws Exception {
+		return bbsdao.selectOne(no);
+	}
+
+	@Override
+	public void update(Book_VO bookVO) throws Exception {
+		bbsdao.update(bookVO);
+	}
+
+	@Override
+	public void delete(int no) throws Exception {
+		bbsdao.delete(no);
 	}
 
 }

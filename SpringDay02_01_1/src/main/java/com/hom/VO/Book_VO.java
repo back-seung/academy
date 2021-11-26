@@ -1,13 +1,22 @@
 package com.hom.VO;
 
 public class Book_VO {
+	private int no = 0;
 	private String author = null;
 	private String title = null;
 	private String genre = null;
 	private String company = null;
 	private String Info = null;
 	private int cnt = 0;
-	
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
 	public int getCnt() {
 		return cnt;
 	}

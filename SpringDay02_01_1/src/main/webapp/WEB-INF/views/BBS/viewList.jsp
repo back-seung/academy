@@ -19,17 +19,16 @@
 			<td>출판사</td>
 			<td>수정 및 삭제</td>
 		</tr>
-		<c:forEach items="${bookList}" var="vo">
-			<c:set var="i" value="${i+1}" />
+		<c:forEach items="${viewList}" var="vo" varStatus="i">
 			<tr>
-				<td>${i-1}</td>
+				<td>${i.count}</td>
 				<td>${vo.author}</td>
-				<td><a href="listDetail?index=${i-1}">${vo.title}</a></td>
+				<td><a href="listDetail?index=${vo.no}">${vo.title}</a></td>
 				<td>${vo.genre}</td>
 				<td>${vo.info}</td>
 				<td>${vo.company}</td>
-				<td><a href="listUpdate?index=${i-1}">수정</a> / <a
-					href="listDelete?index=${i-1}">삭제</a></td>
+				<td><a href="listUpdate?index=${vo.no}">수정</a> / <a
+					href="listDelete?index=${vo.no}">삭제</a></td>
 			</tr>
 		</c:forEach>
 		<!--  여기까지 -->

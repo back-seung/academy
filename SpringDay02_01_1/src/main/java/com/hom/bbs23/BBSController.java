@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hom.DAO.IF_BBSDAO;
 import com.hom.Service.IF_BBSService;
@@ -30,51 +31,41 @@ public class BBSController {
 	@RequestMapping(value = "/inputSave", method = RequestMethod.POST)
 	public String inputSave(Book_VO bookVO) throws Exception {
 		bbsService.insert(bookVO);
-		return "redirect:/inputList";
+		return "redirect:/viewList";
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	// 업데이트 창 이동
+	@RequestMapping(value = "/listUpdate", method = RequestMethod.GET)
+	public String updateList(Model model, @RequestParam("index") int no) throws Exception {
+		model.addAttribute("oneData", bbsService.updateView(no));
+		return "BBS/listUpdate";
+	}
+
+	// 수정 실제로 ㄱ
+	@RequestMapping(value = "/modInput", method = RequestMethod.POST)
+	public String update(Book_VO bookVO) throws Exception {
+		System.out.println(bookVO.getAuthor());
+		System.out.println(bookVO.getInfo());
+		bbsService.update(bookVO);
+		return "redirect:/viewList";
+	}
+
+	@RequestMapping(value = "/viewList", method = RequestMethod.GET)
 	public String list(@ModelAttribute("searchVO") Book_VO searchVO, Model model) throws Exception {
-		List<Book_VO> bookList = bbsService.select(searchVO);
-		model.addAttribute("bookList", bookList);
-		return "BBS/inputList";
+		model.addAttribute("viewList", bbsService.selectAll());
+		return "BBS/viewList";
 	}
 
 	@RequestMapping(value = "/listDetail", method = RequestMethod.GET)
-	public String listDetail(Model model, HttpServletRequest request) {
-		int viewIndex = Integer.parseInt(request.getParameter("index"));
-//		Book_VO bookVO = bookList.get(viewIndex);
-//		int cnt = bookVO.getCnt();
-//		cnt++;
-//		bookVO.setCnt(cnt);
-//		model.addAttribute("oneData", bookVO);
+	public String listDetail(Model model, @RequestParam("index") int no) throws Exception {
+		model.addAttribute("oneData", bbsService.selectOne(no));
 		return "BBS/listDetail";
 	}
 
 	@RequestMapping(value = "/listDelete", method = RequestMethod.GET)
-	public String deleteList(Model model, HttpServletRequest request) {
-		int delIndex = Integer.parseInt(request.getParameter("index"));
-//		Book_VO bookVO = bookList.get(delIndex);
-//		bookList.remove(delIndex);
-		return "redirect:/inputList";
+	public String deleteList(Model model, @RequestParam("index") int no) throws Exception {
+		bbsService.delete(no);
+		return "redirect:/viewList";
 	}
 
-	@RequestMapping(value = "/listUpdate", method = RequestMethod.GET)
-	public String updateList(Model model, HttpServletRequest request) {
-		int updateIndex = Integer.parseInt(request.getParameter("index"));
-//		Book_VO bookVO = bookList.get(updateIndex);
-//		model.addAttribute("oneData", bookVO);
-		return "BBS/listUpdate";
-	}
-
-	@RequestMapping(value = "/doUpdate", method = RequestMethod.POST)
-	public String doUpdate(Model model, HttpServletRequest request) {
-		int updateIndex = Integer.parseInt(request.getParameter("index"));
-//		Book_VO bookVO = bookList.get(updateIndex);
-//		System.out.println(bookVO.getAuthor());
-//		System.out.println(bookVO.getInfo());
-//		bookVO.setAuthor(request.getParameter("author"));
-//		bookVO.setInfo(request.getParameter("info"));
-		return "redirect:/inputList";
-	}
 }

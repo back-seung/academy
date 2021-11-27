@@ -23,10 +23,29 @@ public class IF_BBSDAOImpl implements IF_BBSDAO {
 	}
 
 	@Override
-	public List<Book_VO> select(Book_VO bookVO) throws Exception {
-		List<Book_VO> bookList = null;
-		bookList = sqlSession.selectList("bbs.bookList");
-		return bookList;
+	public List<Book_VO> selectAll() throws Exception {
+		// DB작업만 충실하면 되는 곳
+		return sqlSession.selectList(mapperQuery + ".viewlist");
+	}
+
+	@Override
+	public Book_VO selectOne(int no) throws Exception {
+		return sqlSession.selectOne(mapperQuery + ".viewDetail", no);
+	}
+
+	@Override
+	public void updateCnt(int no) throws Exception {
+		sqlSession.update(mapperQuery + ".updateCnt", no);
+	}
+
+	@Override
+	public void update(Book_VO bookVO) throws Exception {
+		sqlSession.update(mapperQuery + ".update", bookVO);
+	}
+
+	@Override
+	public void delete(int no) throws Exception {
+		sqlSession.delete(mapperQuery + ".delete", no);
 	}
 
 }

@@ -21,8 +21,7 @@ import com.hom.VO.Book_VO;
 public class BBSController {
 	@Inject
 	private IF_BBSService bbsService;
-	@Autowired
-	private IF_BBSDAO bbsdao;
+
 
 	@RequestMapping(value = "/inputSubmit", method = RequestMethod.GET)
 	public String inputForm() {

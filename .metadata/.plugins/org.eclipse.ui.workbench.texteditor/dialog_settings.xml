@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="class=&quot;fs-3&quot;"/>
 			<item value="&#x09;private ArrayList&lt;BBS_VO&gt; bbsList = new ArrayList&lt;BBS_VO&gt;();"/>
 			<item value="connector"/>
 		</list>

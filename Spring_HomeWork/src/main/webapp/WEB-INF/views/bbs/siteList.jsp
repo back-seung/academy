@@ -6,36 +6,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>나중에 볼 리스트</h2>
-	<table border="1">
-		<tr>
-			<th>NO.</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>수정 및 삭제</th>
-			<th>현재 조회수</th>
-		</tr>
-		<c:forEach items="${siteList}" var="site" varStatus="status">
+	<h2>게시판 목록</h2>
+	<table class="table table-bordered table-hover text-center">
+		<thead>
 			<tr>
-				<th>${ status.count}</th>
-				<th><a href=selectOne?index=${site.no}>${site.title}</a></th>
-				<th>${site.author}</th>
-				<th><a href=updateView?index=${site.no}>수정</a>/<a
-					href=delete?index=${site.no}>삭제</a></th>
-				<th>${site.cnt}</th>
+				<th>NO.</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>수정 및 삭제</th>
+				<th>현재 조회수</th>
 			</tr>
-		</c:forEach>
-		<!--  여기까지 -->
+		</thead>
+		<tbody>
+			<c:forEach items="${siteList}" var="site" varStatus="status">
+				<tr>
+					<td>${status.count}</td>
+					<td><a href=selectOne?index=${site.no}>${site.title}</a></td>
+					<td>${site.author}</td>
+					<td><a href=updateView?index=${site.no}>수정</a>/<a
+						href=delete?index=${site.no}>삭제</a></td>
+					<td>${site.cnt}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
-	<table id="downtbl">
-		<tr>
-			<td><a href="${pageContext.request.contextPath}/">[처음으로]</a></td>
-		</tr>
-	</table>
-
-
+	<div class="text-center">
+		<a class="btn btn-primary" href="inputForm">작성하기</a> <a
+			class="btn btn-primary" href="${pageContext.request.contextPath}/">처음으로</a>
+	</div>
 </body>
 </html>

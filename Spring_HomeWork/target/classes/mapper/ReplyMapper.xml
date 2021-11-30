@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- SQL> create table reply( 2 rno number(3,0) not null primary key, 3 cmt 
+	varchar2(200), 4 rdate date default sysdate 5 ); -->
+<mapper namespace="com.seung.DAO.IF_Reply_DAO">
+	<insert id="insert">
+		INSERT INTO reply
+		VALUES(
+		bbs_seq.nextval,
+		#{cmt},
+		default
+		)
+	</insert>
+</mapper>

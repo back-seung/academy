@@ -12,4 +12,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		default
 		)
 	</insert>
+	<select id="selectAll" resultType="com.seung.VO.User_VO">
+		SELECT *
+		FROM
+		huser
+	</select>
+	<select id="selectOne" resultType="com.seung.VO.User_VO">
+		SELECT *
+		FROM
+		huser
+		WHERE id =
+		#{id}
+	</select>
+	<update id="update">
+		UPDATE huser
+		SET name = #{name}
+		WHERE pwd = #{pwd}
+	</update>
+	<delete id="delete">
+		DELETE FROM huser
+		WHERE pwd = #{pwd}
+	</delete>
 </mapper>

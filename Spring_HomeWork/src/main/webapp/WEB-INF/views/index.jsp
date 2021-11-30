@@ -14,7 +14,8 @@
 		<hr />
 		<p class="fs-3">유튜브의 링크 기능을 이용하여 나중에 볼 리스트를 정리합니다.</p>
 		<p>
-			<a class="btn btn-primary" href="siteList">전체보기</a>
+			<a class="btn btn-primary" href="siteList">전체보기</a> <a
+				class="btn btn-primary" href="userInputForm">전체보기</a>
 		</p>
 		<p class="fs-4">How To Use ❓</p>
 		<hr />

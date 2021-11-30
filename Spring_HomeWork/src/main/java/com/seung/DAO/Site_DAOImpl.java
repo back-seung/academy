@@ -8,12 +8,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.seung.VO.Site_VO;
+import com.seung.VO.User_VO;
 
 @Repository
 public class Site_DAOImpl implements IF_Site_DAO {
 	@Inject
 	private SqlSession sqlSession;
 	private static String mapperquery = "com.seung.DAO.IF_Site_DAO";
+
 	@Override
 	public void insert(Site_VO siteVO) throws Exception {
 		sqlSession.insert(mapperquery + ".insert", siteVO);

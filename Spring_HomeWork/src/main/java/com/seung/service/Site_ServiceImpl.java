@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.seung.DAO.IF_Site_DAO;
+import com.seung.DAO.IF_User_DAO;
 import com.seung.VO.Site_VO;
+import com.seung.VO.User_VO;
 
 @Service
 public class Site_ServiceImpl implements IF_Site_Service {
@@ -44,4 +46,5 @@ public class Site_ServiceImpl implements IF_Site_Service {
 	public void delete(int no) throws Exception {
 		bbsdao.delete(no);
 	}
+
 }

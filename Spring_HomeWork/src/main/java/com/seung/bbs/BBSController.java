@@ -20,13 +20,13 @@ public class BBSController {
 	private IF_Site_Service bbsService; // 서비스객체
 
 	@RequestMapping(value = "/inputForm", method = RequestMethod.GET)
-	public String inputForm(Locale locale, Model model) throws Exception {
+	public String inputForm() throws Exception {
 
 		return "bbs/inputForm";
 	}
 
 	@RequestMapping(value = "/inputSave", method = RequestMethod.POST)
-	public String inputSave(Site_VO siteVO, Locale locale, Model model) throws Exception {
+	public String inputSave(Site_VO siteVO) throws Exception {
 		bbsService.insert(siteVO);
 		return "redirect:/siteList"; // 컨트롤러 재호출
 	}

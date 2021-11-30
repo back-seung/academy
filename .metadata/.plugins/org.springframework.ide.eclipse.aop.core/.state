@@ -2,7 +2,6 @@
 <aop-reference-model>
 <aop-project name="SpringDay01"/>
 <aop-project name="SpringDay02"/>
-<aop-project name="SpringWebProject"/>
 <aop-project name="SpringDay02_01"/>
 <aop-project name="Spring_HomeWork"/>
 <aop-project name="SpringDay02_01_1"/>

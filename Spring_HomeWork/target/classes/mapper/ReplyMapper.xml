@@ -8,9 +8,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert">
 		INSERT INTO reply
 		VALUES(
+		#{sno},
 		bbs_seq.nextval,
-		#{cmt},
-		default
+		#{author},
+		#{cmt}
 		)
 	</insert>
+	<select id="selectAll" resultType="com.seung.VO.Reply_VO">
+		SELECT * FROM reply
+		WHERE sno =
+		#{sno}
+	</select>
 </mapper>

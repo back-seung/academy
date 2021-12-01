@@ -25,7 +25,7 @@
 			<c:forEach items="${siteList}" var="site" varStatus="status">
 				<tr>
 					<td>${status.count}</td>
-					<td><a href=selectOne?index=${site.no}>${site.title}</a></td>
+					<td><a href=selectOne?index=${site.no}&selectAll>${site.title}</a></td>
 					<td>${site.author}</td>
 					<td><a href=updateView?index=${site.no}>수정</a>/<a
 						href=delete?index=${site.no}>삭제</a></td>

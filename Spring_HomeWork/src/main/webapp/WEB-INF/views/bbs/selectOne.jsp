@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +11,8 @@
 <body>
 	<form action="CMTInsert" method="POST">
 		<div class="jumbotron text-center">
+			<input type="hidden" name="sno" value="${siteData.no}" /> <input
+				type="hidden" name="author" value="${siteData.author}" />
 			<table class="table table-dark">
 				<tr>
 					<td class="fs-5">제목</td>
@@ -32,11 +34,19 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th colspan="4">댓글작성하기</th>
+							<th>No.</th>
+							<th>댓글 내용</th>
+							<th>글쓴이</th>
 						</tr>
 					</thead>
 					<tbody>
-
+						<c:forEach items="${replyList}" var="reply" varStatus="status">
+							<tr>
+								<td>${status.count}</td>
+								<td>${reply.cmt}</td>
+								<td>${reply.author}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

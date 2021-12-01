@@ -40,6 +40,7 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:if test="${replyList != null}">
 						<c:forEach items="${replyList}" var="reply" varStatus="status">
 							<tr>
 								<td>${status.count}</td>
@@ -47,6 +48,7 @@
 								<td>${reply.author}</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 					</tbody>
 				</table>
 			</div>

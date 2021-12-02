@@ -13,11 +13,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		default, 0)
 	</insert>
 	<select id="selectAll" resultType="com.seung.VO.Site_VO">
-		SELECT * FROM site
+		SELECT * FROM
+		(SELECT rownum as
+		k, s.* FROM
+		(SELECT * FROM site ORDER BY no DESC) s)
+		WHERE k BETWEEN
+		#{startNo}+1 AND #{startNo} + #{perPageNum}
 	</select>
 	<select id="selectOne" resultType="com.seung.VO.Site_VO">
 		SELECT * FROM site WHERE no =
 		#{no}
+	</select>
+	<select id="boardCNT" resultType="int">
+		SELECT count(*) FROM site
 	</select>
 	<update id="updateCnt">
 		UPDATE site SET cnt = cnt + 1 WHERE no = #{no}

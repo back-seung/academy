@@ -10,9 +10,6 @@ import com.human.DAO.IF_BBSDAO;
 import com.human.VO.BBSVO;
 @Service
 public class IF_BBSServiceImpl implements IF_BBSService{
-	
-	
-		
 	@Inject
 	private IF_BBSDAO bbsdao; 
 	@Override

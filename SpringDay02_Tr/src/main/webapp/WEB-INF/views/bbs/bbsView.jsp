@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,40 +84,34 @@
 </div>
 
 <div id="commandDiv">
-<form class="form-horizontal" action="" method="">
+<form class="form-horizontal" action="commentInput" method="post">
   <div class="form-group">
-	 <label for="inputEmail3" class="col-sm-2 control-label">
-	 <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
-	 작성자 : 내용</label>
+	<c:forEach items="${commentList}" var="vo" varStatus="status">
+	 	<span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
+		 <p> ${vo.name} :: ${vo.memo } :: ${vo.wdate }</p>
+	</c:forEach>	
   </div>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">작성자</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="작성자를 입력하세요" name="">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="작성자를 입력하세요" name="name">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">내용</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="내용을 입력하세요." name="">
+      <input type="text" class="form-control" id="inputPassword3" placeholder="내용을 입력하세요." name="memo">
     </div>
   </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-8">
+      <input type="hidden" name="bbs_no" value="${oneData.no }">
       <button type="submit" class="btn btn-default">저장</button>
     </div>
   </div>
 </form>
 
 </div>
-
-
-
-
-
-
-
-
 </body>
 </html>

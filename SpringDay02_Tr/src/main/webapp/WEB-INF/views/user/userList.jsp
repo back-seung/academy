@@ -65,6 +65,7 @@
 <!--	입력한 이름은 ${getName } <hr>   
 	입력한 메모는 ${getMemo }   단일 변수를 전달 받은 것 -->
 	<!--  bbslist  자료형이 list를 전달 받을 것.. -->
+
 	<table >
 		<tr>
 			<th>번호</th>

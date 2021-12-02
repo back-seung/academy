@@ -4,10 +4,12 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.seung.VO.Page_VO;
 import com.seung.VO.Site_VO;
 import com.seung.service.IF_Reply_Service;
 import com.seung.service.IF_Site_Service;
@@ -32,15 +34,24 @@ public class BBSController {
 	}
 
 	@RequestMapping(value = "/siteList", method = RequestMethod.GET)
-	public String selectAll(Model model) throws Exception {
-		model.addAttribute("siteList", bbsService.selectAll());
+	public String selectAll(Model model, Page_VO pageVO) throws Exception {
+		if (pageVO.getPage() == null) {
+			pageVO.setPage(1);
+		}
+		pageVO.setPerPageNum(10);
+		pageVO.setTotalCount(bbsService.boardCNT());
+		System.out.println("전체글 개수  : " + pageVO.getTotalCount());
+		System.out.println("현재 페이지  : " + pageVO.getPage());
+		model.addAttribute("siteList", bbsService.selectAll(pageVO));
+		model.addAttribute("pageVO", pageVO);
+		System.out.println(pageVO.getStartPage());
+		System.out.println(pageVO.getEndPage());
 		return "bbs/siteList";
 	}
 
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
 	public String selectOne(Model model, int index) throws Exception {
 		model.addAttribute("siteData", bbsService.selectOne(index));
-		System.out.println("ctrl : " + index);
 		model.addAttribute("replyList", replyService.selectAll(index));
 		return "bbs/selectOne";
 	}

@@ -7,9 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.seung.DAO.IF_Site_DAO;
-import com.seung.DAO.IF_User_DAO;
+import com.seung.VO.Page_VO;
 import com.seung.VO.Site_VO;
-import com.seung.VO.User_VO;
 
 @Service
 public class Site_ServiceImpl implements IF_Site_Service {
@@ -22,8 +21,8 @@ public class Site_ServiceImpl implements IF_Site_Service {
 	}
 
 	@Override
-	public List<Site_VO> selectAll() throws Exception {
-		return bbsdao.selectAll();
+	public List<Site_VO> selectAll(Page_VO pageVO) throws Exception {
+		return bbsdao.selectAll(pageVO);
 	}
 
 	@Override
@@ -45,6 +44,11 @@ public class Site_ServiceImpl implements IF_Site_Service {
 	@Override
 	public void delete(int no) throws Exception {
 		bbsdao.delete(no);
+	}
+
+	@Override
+	public int boardCNT() throws Exception{
+		return bbsdao.boardCNT();
 	}
 
 }

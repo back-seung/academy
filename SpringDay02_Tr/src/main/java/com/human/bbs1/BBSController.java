@@ -12,14 +12,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.human.DAO.IF_BBSDAOImpl;
+import com.human.DAO.IF_CommentDAO;
 import com.human.VO.BBSVO;
 import com.human.service.IF_BBSService;
 import com.human.service.IF_BBSServiceImpl;
+import com.human.service.IF_CommentService;
 
 @Controller
 public class BBSController {
 	@Inject
 	private IF_BBSService bbsService;
+	@Inject
+	private IF_CommentService commentService;
+	
 	@RequestMapping(value = "/inputForm", method = RequestMethod.GET)
 	public String inputForm(Locale locale, Model model) throws Exception{
 		
@@ -42,7 +47,9 @@ public class BBSController {
 	}
 	@RequestMapping(value = "/bbsView", method = RequestMethod.GET)
 	public String bbsView(Locale locale, Model model, @RequestParam("bbsindex") int vidx) throws Exception{
+		//bbsView에게 2개의 자료를 넘겨 줘야 합니다.. 서로 다른 자료..  이럴때는 서비를 분리
 		model.addAttribute("oneData", bbsService.viewDetail(vidx));
+		model.addAttribute("commentList",commentService.selectallbbsno(vidx));
 		return "bbs/bbsView";
 	}
 	@RequestMapping(value = "/bbsDelete", method = RequestMethod.GET)

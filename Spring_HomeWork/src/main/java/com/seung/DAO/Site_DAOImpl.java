@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.seung.VO.Page_VO;
 import com.seung.VO.Site_VO;
-import com.seung.VO.User_VO;
 
 @Repository
 public class Site_DAOImpl implements IF_Site_DAO {
@@ -22,8 +22,8 @@ public class Site_DAOImpl implements IF_Site_DAO {
 	}
 
 	@Override
-	public List<Site_VO> selectAll() throws Exception {
-		return sqlSession.selectList(mapperquery + ".selectAll");
+	public List<Site_VO> selectAll(Page_VO pageVO) throws Exception {
+		return sqlSession.selectList(mapperquery + ".selectAll", pageVO);
 	}
 
 	@Override
@@ -44,6 +44,11 @@ public class Site_DAOImpl implements IF_Site_DAO {
 	@Override
 	public void delete(int no) throws Exception {
 		sqlSession.delete(mapperquery + ".delete", no);
+	}
+
+	@Override
+	public int boardCNT() throws Exception {
+		return sqlSession.selectOne(mapperquery + ".boardCNT");
 	}
 
 }

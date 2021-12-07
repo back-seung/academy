@@ -6,22 +6,30 @@
 <head>
 <meta charset="UTF-8" />
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <title>유튜브 추천</title>
 </head>
 <body>
 	<div class="jumbotron text-center">
 		<h1>볼만한 유튜브 추천</h1>
+		<hr>
+		현재 사용자 이름 : ${sessionScope.userName } / ${sessionScope.userId} <a
+			href="logout">logout</a>
+		<hr>
 		<hr />
 		<p class="fs-3">유튜브의 링크 기능을 이용하여 나중에 볼 리스트를 정리합니다.</p>
 		<p>
 			<a class="btn btn-primary" href="siteList">전체보기</a> <a
+				class="btn btn-primary" href="login">로그인</a> <a
 				class="btn btn-primary" href="userInputForm">회원가입</a>
 		</p>
 		<p class="fs-4">How To Use ❓</p>

@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <aop-reference-model/>
+=======
+<aop-reference-model>
+<aop-project name="SpringDay02"/>
+<aop-project name="SpringDay01"/>
+<aop-project name="Spring0303_Tr_Paging_Main_Member"/>
+<aop-project name="SpringDay02_01"/>
+<aop-project name="SpringDay02_Tr"/>
+<aop-project name="Spring_HomeWork"/>
+<aop-project name="SpringDay02_01_1"/>
+</aop-reference-model>
+>>>>>>> e32060ab97157fedc829e33a504e45dac6367af2

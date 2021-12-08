@@ -29,8 +29,7 @@
 		<div class="jumbotron text-center">
 			<h2>이름 수정</h2>
 			<p>현재 USER 정보</p>
-			<p>ID : ${user.id}</p>
-			<p>NAME : ${user.name}</p>
+			<p>ID : ${  ${user.name}</p>
 			<hr />
 			<p>수정</p>
 			<p>

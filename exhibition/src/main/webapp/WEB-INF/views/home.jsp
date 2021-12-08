@@ -29,6 +29,15 @@ body {
 .font-lg {
 	font-size: large;
 }
+
+.map {
+	border-radius: 3%;
+	border: 1px solid lightgray;
+}
+
+.notice {
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -42,10 +51,10 @@ body {
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">VIEW LIST</a></li>
-					<li><a href="#">ADD LIST</a></li>
-					<li><a href="#">현재 사용자 : ${name}님</a></li>
-					<li><a href="#">LOG OUT</a></li>
+					<li><a href="/html/selectAll.html">VIEW LIST</a></li>
+					<li><a href="/html/">MY PAGE</a></li>
+					<li></li>
+					<li><a href="/html/login.html">LOG OUT</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -61,13 +70,14 @@ body {
 				<div class="page-header font-lg">
 					<div class="caption">
 						<ul class="list-group">
-							<span class="badge">NOTICE</span>
-							<li class="list-group-item">Exhibition은 사람들이 많이 찾는 인싸가 될 수
-								있는 전시회를 엄중하게 선별하여 소개 시켜드리겠습니다.</li>
+							<span class="badge"><a class="notice" href=""> NOTICE</a></span>
+							<li class="list-group-item"><span
+								class="label label-default">New</span> Exhibition은 사람들이 많이 찾는
+								인싸가 될 수 있는 전시회를 엄중하게 선별하여 소개 시켜드립니다.</li>
 							<li class="list-group-item">Exhibition은
-								사람들이 잘 모르고 있던 숨겨진 보물같은 전시회를 찾아 소개 시켜드리겠습니다.</li>
+								사람들이 잘 모르고 있던 숨겨진 보물같은 전시회를 찾아 소개 시켜드립니다.</li>
 							<li class="list-group-item">Exhibition은
-								사람들에게 유용한 전시회만을 찾아 소개 시켜드리겠습니다.</li>
+								사람들에게 유용한 전시회만을 찾아 소개 시켜드립니다.</li>
 						</ul>
 					</div>
 				</div>
@@ -130,5 +140,61 @@ body {
 			<div class="caption">2020-09-12 ~ 2022-02-02</div>
 		</div>
 	</div>
+	<span class="badge">YOUR CURRENT POS</span>
+	<div class="map col-md-offset-3" style="width: 48%; height: 70%"></div>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5560b6913a89c394b9ccac44ec1aa38&libraries=services"></script>
+	<script>
+		var mapContainer = document.querySelector(".map"), // 지도를 표시할 div
+		mapOption = {
+			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level : 10, // 지도의 확대 레벨
+		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+		if (navigator.geolocation) {
+			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var lat = position.coords.latitude, // 위도
+				lon = position.coords.longitude; // 경도
+
+				var locPosition = new kakao.maps.LatLng(lat, lon);
+
+				// 마커와 인포윈도우를 표시합니다
+				displayMarker(locPosition, message);
+
+				var geocoder = new kakao.maps.services.Geocoder();
+				var usercoords = document.querySelector(".coord");
+				var callback = function(result, status) {
+					if (status === kakao.maps.services.Status.OK) {
+						console.log(result[0].address.address_name);
+					}
+				};
+				usercoords.innerHTML = geocoder.coord2Address(lon, lat,
+						callback);
+			});
+		} else {
+			// HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+			var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = "geolocation을 사용할수 없어요..";
+
+			displayMarker(locPosition, message);
+		}
+
+		// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+		function displayMarker(locPosition, message) {
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+				map : map,
+				position : locPosition,
+			});
+			// 지도 중심좌표를 접속위치로 변경합니다
+			map.setCenter(locPosition);
+		}
+	</script>
 </body>
 </html>
+
+

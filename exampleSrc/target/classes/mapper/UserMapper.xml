@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.human.DAO.IF_UserDAO">
+	<insert id="insert">
+		insert into huser
+		values (#{id}, #{pwd}, #{name},default)
+	</insert>
+	<update id="usermod">
+		update huser set pwd = #{pwd}, name=#{name}
+   		where id=#{id}
+	</update>
+	<select id="selectall" resultType="com.human.VO.UserVO">
+		select * from huser
+	</select>
+	<select id="selectOne" resultType="com.human.VO.UserVO">
+		select * from huser where id = #{uid}
+	</select>
+	<delete id="userdel">
+		delete from huser where id = #{id}
+	</delete>
+</mapper>
